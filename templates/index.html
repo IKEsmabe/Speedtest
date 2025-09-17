@@ -19,11 +19,11 @@
     </div>
     <script>
         document.getElementById('testButton').addEventListener('click', function() {
-            fetch('/run_speed_test')
+            fetch('/speedtest')
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('downloadSpeed').innerText = 'Download Speed: ' + data.download + ' Mbps';
-                    document.getElementById('uploadSpeed').innerText = 'Upload Speed: ' + data.upload + ' Mbps';
+                    document.getElementById('downloadSpeed').innerText = 'Download Speed: ' + data.download_speed + ' Mbps';
+                    document.getElementById('uploadSpeed').innerText = 'Upload Speed: ' + data.upload_speed + ' Mbps';
                     document.getElementById('ping').innerText = 'Ping: ' + data.ping + ' ms';
                     document.getElementById('results').style.display = 'block';
                 });
