@@ -2,6 +2,8 @@ body, html {
     height: 100%;
     margin: 0;
     padding: 0;
+    background: #181a1b;
+    color: #f1f1f1;
 }
 
 body {
@@ -9,34 +11,36 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #f4f4f4;
+    background-color: #181a1b;
 }
 
 h1 {
-    color: #333;
+    color: #f1f1f1;
 }
 
 .container {
     max-width: 600px;
     margin: auto;
-    background: white;
+    background: #23272b;
+    color: #f1f1f1;
     padding: 30px 30px 20px 30px;
     border-radius: 10px;
-    box-shadow: 0 0 18px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 0 18px rgba(0, 0, 0, 0.32);
     text-align: center;
 }
 
 button {
-    background-color: #28a745;
+    background-color: #007bff;
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.2s;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: #0056b3;
 }
 
 .results {
@@ -48,8 +52,28 @@ button:hover {
     font-size: 18px;
 }
 
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 18px;
+}
+
+.result-label {
+    text-align: left;
+    flex: 1;
+    color: #e0e0e0;
+}
+
+.result-value {
+    text-align: right;
+    flex: 1;
+    color: #90ee90;
+}
+
 #fetching {
-    color: #888;
+    color: #bbb;
     margin-bottom: 1rem;
 }
 
