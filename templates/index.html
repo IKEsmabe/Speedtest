@@ -9,7 +9,11 @@
 <body>
     <div class="container">
         <h1>Internet Speed Test</h1>
+        <!-- Button to start the speed test -->
         <button id="testButton">Run Speed Test</button>
+        <!-- Message shown while fetching data -->
+        <p id="fetching" style="display: none;">Fetching data...</p>
+        <!-- Results section, hidden by default -->
         <div id="results" style="display: none;">
             <h2>Results:</h2>
             <p id="downloadSpeed"></p>
@@ -18,14 +22,29 @@
         </div>
     </div>
     <script>
+        // Add click event listener to the "Run Speed Test" button
         document.getElementById('testButton').addEventListener('click', function() {
+            // Show the "Fetching data..." message
+            document.getElementById('fetching').style.display = 'block';
+
+            // Show placeholder text for results
+            document.getElementById('downloadSpeed').innerText = 'Download Speed: ...';
+            document.getElementById('uploadSpeed').innerText = 'Upload Speed: ...';
+            document.getElementById('ping').innerText = 'Ping: ...';
+            // Display the results section
+            document.getElementById('results').style.display = 'block';
+
+            // Make a request to the backend to run the speed test
             fetch('/speedtest')
                 .then(response => response.json())
                 .then(data => {
+                    // Hide the "Fetching data..." message when results arrive
+                    document.getElementById('fetching').style.display = 'none';
+
+                    // Display the actual results
                     document.getElementById('downloadSpeed').innerText = 'Download Speed: ' + data.download_speed + ' Mbps';
                     document.getElementById('uploadSpeed').innerText = 'Upload Speed: ' + data.upload_speed + ' Mbps';
                     document.getElementById('ping').innerText = 'Ping: ' + data.ping + ' ms';
-                    document.getElementById('results').style.display = 'block';
                 });
         });
     </script>
