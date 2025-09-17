@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Test</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Internet Speed Test</h1>
+        <button id="testButton">Run Speed Test</button>
+        <div id="results" style="display: none;">
+            <h2>Results:</h2>
+            <p id="downloadSpeed"></p>
+            <p id="uploadSpeed"></p>
+            <p id="ping"></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('testButton').addEventListener('click', function() {
+            fetch('/run_speed_test')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('downloadSpeed').innerText = 'Download Speed: ' + data.download + ' Mbps';
+                    document.getElementById('uploadSpeed').innerText = 'Upload Speed: ' + data.upload + ' Mbps';
+                    document.getElementById('ping').innerText = 'Ping: ' + data.ping + ' ms';
+                    document.getElementById('results').style.display = 'block';
+                });
+        });
+    </script>
+</body>
+</html>
